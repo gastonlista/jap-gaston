@@ -20,7 +20,6 @@ fetch(datos).then
  </div>
  `;
  document.getElementById(productosautos.innerHTML += creartabla)
- console.log(respuestadatos.products)
         }
     })
 
