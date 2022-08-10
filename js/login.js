@@ -23,7 +23,7 @@ button.addEventListener("click", (e) => {
        console.log(label[0].getElementsByTagName("p"))
     }
     else {
-        window.location.href = "https://gastonlista.github.io/jap-gaston/";
+        window.location.href = "index.html";
     }
 })
 
