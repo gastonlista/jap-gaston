@@ -23,7 +23,8 @@ button.addEventListener("click", (e) => {
        console.log(label[0].getElementsByTagName("p"))
     }
     else {
-        window.location.href = "./index.html";
+        window.location.href = "index.html";
+        return false;
     }
 })
 
