@@ -23,9 +23,12 @@ button.addEventListener("click", (e) => {
         console.log(label[0].getElementsByTagName("p"))
     }
     else {
-        window.location.href = "https://gastonlista.github.io/jap-gaston/login.html";
+        window.location.href = "login.html";
+        localStorage.setItem("username", username.value);
+        location.href = "login.html";
     }
 })
+
 
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();

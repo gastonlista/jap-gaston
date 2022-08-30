@@ -39,3 +39,28 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.addEventListener("DOMContentLoaded", () =>{
+  let username = localStorage.getItem("username");
+if (username == null) {
+
+    Swal.fire({
+        title: "Debe iniciar sesión para poder continuar",
+        confirmButtonColor: '#3085d6'
+    })
+        .then((result) => {
+            if (result.isConfirmed) {
+                location.href = "login.html";
+            }
+        });
+}
+else {
+    document.getElementById("cerrar").style.display = "block";
+    document.getElementById("usuario").innerHTML = username;
+}
+
+document.getElementById("cerrar").addEventListener("click", () => {
+    location.href = "index.html";
+    localStorage.removeItem("username");
+});
+});

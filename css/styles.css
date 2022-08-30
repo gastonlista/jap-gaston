@@ -194,3 +194,7 @@ a.custom-card:hover {
   padding: 1rem;
   text-align: center;
 }
+
+#cerrar {
+  display: none;
+}
