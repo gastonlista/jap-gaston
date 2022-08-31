@@ -6,61 +6,60 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
+let categorias = localStorage.getItem("catID")
+let productosdata = `https://japceibal.github.io/emercado-api/cats_products/` + categorias + `.json`
 
-let showSpinner = function(){
+let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
 }
 
-let hideSpinner = function(){
+let hideSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
-let getJSONData = function(url){
-    let result = {};
-    showSpinner();
-    return fetch(url)
+let getJSONData = function (url) {
+  let result = {};
+  showSpinner();
+  return fetch(url)
     .then(response => {
       if (response.ok) {
         return response.json();
-      }else{
+      } else {
         throw Error(response.statusText);
       }
     })
-    .then(function(response) {
-          result.status = 'ok';
-          result.data = response;
-          hideSpinner();
-          return result;
+    .then(function (response) {
+      result.status = "ok";
+      result.data = response;
+      hideSpinner();
+      return result;
     })
-    .catch(function(error) {
-        result.status = 'error';
-        result.data = error;
-        hideSpinner();
-        return result;
+    .catch(function (error) {
+      result.status = "error";
+      result.data = error;
+      hideSpinner();
+      return result;
     });
 }
 
-document.addEventListener("DOMContentLoaded", () =>{
+document.addEventListener("DOMContentLoaded", () => {
   let username = localStorage.getItem("username");
-if (username == null) {
+  if (username == null) {
 
-    Swal.fire({
-        title: "Debe iniciar sesión para poder continuar",
-        confirmButtonColor: '#3085d6'
-    })
-        .then((result) => {
-            if (result.isConfirmed) {
-                location.href = "login.html";
-            }
-        });
-}
-else {
+    let username = localStorage.getItem("username")
+
+    if (username == null) {
+      location.href = "login.html";
+    }
+  }
+
+  else {
     document.getElementById("cerrar").style.display = "block";
     document.getElementById("usuario").innerHTML = username;
-}
+  }
 
-document.getElementById("cerrar").addEventListener("click", () => {
+  document.getElementById("cerrar").addEventListener("click", () => {
     location.href = "index.html";
     localStorage.removeItem("username");
-});
+  });
 });
