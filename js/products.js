@@ -1,10 +1,10 @@
 const ordenPorPrecioAlto = "AZ";
 const ordenPorPrecioBajo = "ZA";
 const ordenPorCantProd = "Cant.";
-let corriendoelarray = [];
+let corriendoElArray = [];
 let currentSortCriteria = undefined;
-let minCount = undefined;
-let maxCount = undefined;
+let costoMinimo = undefined;
+let costoMaximo = undefined;
 
 function sortCategories(criteria, array) {
     let result = [];
@@ -39,17 +39,18 @@ function setCatID(id) {
     window.location = "products.html"
 }
 
-function mostrandoProductos() {
+function mostrandoProductos(corriendoElArray) {
 
     let htmlContentToAppend = "";
-    for (let i = 0; i < corriendoelarray.length; i++) {
 
-        let products = corriendoelarray[i];
-        if (((minCount == undefined) || (minCount != undefined && parseInt(products.soldCount) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(products.soldCount) <= maxCount))) {
+    for (let i = 0; i < corriendoElArray.length; i++) {
+
+        let products = corriendoElArray[i];
+        if (((costoMinimo == undefined) || (costoMinimo != undefined && parseInt(products.cost) >= costoMinimo)) &&
+            ((costoMaximo == undefined) || (costoMaximo != undefined && parseInt(products.cost) <= costoMaximo))) {
 
             htmlContentToAppend += `
-            <div onclick="setCatID(${products.id})" class="list-group-item list-group-item-action cursor-active">
+                <div onclick="setCatID(${products.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="${products.image}" class="img-thumbnail">
@@ -65,8 +66,7 @@ function mostrandoProductos() {
             </div>
             `
         }
-        document.getElementById("productoslista").innerHTML = htmlContentToAppend;
-        document.getElementById("lista").innerHTML
+        document.getElementById("productosLista").innerHTML = htmlContentToAppend;
     }
 }
 
@@ -76,63 +76,82 @@ function sortAndShowCategories(sortCriteria, categoriesArray) {
     currentSortCriteria = sortCriteria;
 
     if (categoriesArray != undefined) {
-        corriendoelarray = categoriesArray;
+        corriendoElArray = categoriesArray;
     }
 
-    corriendoelarray = sortCategories(currentSortCriteria, corriendoelarray);
+    corriendoElArray = sortCategories(currentSortCriteria, corriendoElArray);
 
-    mostrandoProductos();
+    mostrandoProductos(corriendoElArray);
 }
 
 
-document.addEventListener("DOMContentLoaded", function (e) {
+document.addEventListener("DOMContentLoaded", () => {
     getJSONData(productosdata).then(function (resultObj) {
         if (resultObj.status === "ok") {
-            corriendoelarray = resultObj.data.products
-            mostrandoProductos()
+            corriendoElArray = resultObj.data.products
+            mostrandoProductos(corriendoElArray)
         }
     });
 
-    document.getElementById("sortAsc").addEventListener("click", function () {
+    document.getElementById("sortAsc").addEventListener("click", () => {
         sortAndShowCategories(ordenPorPrecioAlto);
     });
 
-    document.getElementById("sortDesc").addEventListener("click", function () {
+    document.getElementById("sortDesc").addEventListener("click", () => {
         sortAndShowCategories(ordenPorPrecioBajo);
     });
 
-    document.getElementById("sortByCount").addEventListener("click", function () {
+    document.getElementById("sortByCount").addEventListener("click", () => {
         sortAndShowCategories(ordenPorCantProd);
     });
 
-    document.getElementById("clearRangeFilter").addEventListener("click", function () {
-        document.getElementById("rangeFilterCountMin").value = "";
-        document.getElementById("rangeFilterCountMax").value = "";
+    document.getElementById("clearRangeFilter").addEventListener("click", () => {
+        document.getElementById("filtroCostoMinimo").value = "";
+        document.getElementById("filtroCostoMaximo").value = "";
 
-        minCount = undefined;
-        maxCount = undefined;
+        costoMinimo = undefined;
+        costoMaximo = undefined;
 
-        mostrandoProductos();
+        mostrandoProductos(corriendoElArray);
     });
 
-    document.getElementById("rangeFilterCount").addEventListener("click", function () {
-        minCount = document.getElementById("rangeFilterCountMin").value;
-        maxCount = document.getElementById("rangeFilterCountMax").value;
+    document.getElementById("rangoDePrecios").addEventListener("click", () => {
+        costoMinimo = document.getElementById("filtroCostoMinimo").value;
+        costoMaximo = document.getElementById("filtroCostoMaximo").value;
 
-        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0) {
-            minCount = parseInt(minCount);
+        if ((costoMinimo != undefined) && (costoMinimo != "") && (parseInt(costoMinimo)) >= 0) {
+            costoMinimo = parseInt(costoMinimo);
         }
         else {
-            minCount = undefined;
+            costoMinimo = undefined;
         }
 
-        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0) {
-            maxCount = parseInt(maxCount);
+        if ((costoMaximo != undefined) && (costoMaximo != "") && (parseInt(costoMaximo)) >= 0) {
+            costoMaximo = parseInt(costoMaximo);
         }
         else {
-            maxCount = undefined;
+            costoMaximo = undefined;
         }
 
-        mostrandoProductos();
+        mostrandoProductos(corriendoElArray);
     });
+
+    document.getElementById("busqueda").addEventListener("keyup", () => {
+        buscarProductos(corriendoElArray);
+    });
+
 });
+
+function buscarProductos(corriendoElArray) {
+
+    let buscandoo = document.getElementById("busqueda").value;
+
+    let filtrito = corriendoElArray.filter(products => {
+        return (products.name.toLowerCase().indexOf(buscandoo.toLowerCase()) > -1) || (products.description.toLowerCase().indexOf(buscandoo.toLowerCase()) > -1)
+
+    });
+
+    mostrandoProductos(filtrito);
+    console.log(filtrito)
+}
+
