@@ -9,6 +9,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -39,9 +40,24 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div id="productosLista"></div>
+      <div id="productosLista2"></div>
+      <div id="calificaciones"></div>
+      <br>
+      <form>
+      <div class="luisboton">
+        <textarea  cols="50" placeholder="Deja tu comentario aqui..." id="comentario"></textarea>
+        <input type="button" onclick="mementario(), now()"  value="Comentar">
+        <select id="estrellitas">
+          <option>Puntuacion</option>
+          <option value="1">1 estrella</option>
+          <option value="2">2 estrellas</option>
+          <option value="3">3 estrellas</option>
+          <option value="4">4 estrellas</option>
+          <option value="5">5 estrellas</option>
+        </select>
       </div>
+    </form>
     </div>
   </main>
   <footer class="text-muted">

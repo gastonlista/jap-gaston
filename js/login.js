@@ -27,7 +27,7 @@ button.addEventListener("click", (e) => {
         localStorage.setItem("username", username.value);
         location.href = "login.html";
     }
-})
+});
 
 
 function onSignIn(googleUser) {

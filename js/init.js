@@ -6,8 +6,20 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
+
+
 let categorias = localStorage.getItem("catID")
 let productosdata = `https://japceibal.github.io/emercado-api/cats_products/` + categorias + `.json`
+
+
+
+let info = localStorage.getItem("juegardos")
+let juguetitos = `https://japceibal.github.io/emercado-api/products/` + info + `.json`
+
+
+let comentariardos = `https://japceibal.github.io/emercado-api/products_comments/` + info + `.json`
+
+
 
 let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -44,22 +56,12 @@ let getJSONData = function (url) {
 
 document.addEventListener("DOMContentLoaded", () => {
   let username = localStorage.getItem("username");
-  if (username == null) {
-
-    let username = localStorage.getItem("username")
-
-    if (username == null) {
-      location.href = "login.html";
-    }
-  }
-
-  else {
-    document.getElementById("cerrar").style.display = "block";
-    document.getElementById("usuario").innerHTML = username;
-  }
+  document.getElementById("cerrar").style.display = "block";
+  document.getElementById("usuario").innerHTML = username;
 
   document.getElementById("cerrar").addEventListener("click", () => {
     location.href = "index.html";
     localStorage.removeItem("username");
   });
 });
+

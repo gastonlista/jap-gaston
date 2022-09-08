@@ -34,10 +34,12 @@ function sortCategories(criteria, array) {
     return result;
 }
 
-function setCatID(id) {
-    localStorage.setItem("catID", id);
-    window.location = "products.html"
+function juguetitosID(id) {
+    localStorage.setItem("juegardos", id);
+    window.location = "product-info.html"
 }
+
+
 
 function mostrandoProductos(corriendoElArray) {
 
@@ -50,7 +52,7 @@ function mostrandoProductos(corriendoElArray) {
             ((costoMaximo == undefined) || (costoMaximo != undefined && parseInt(products.cost) <= costoMaximo))) {
 
             htmlContentToAppend += `
-                <div onclick="setCatID(${products.id})" class="list-group-item list-group-item-action cursor-active">
+            <div onclick="juguetitosID(${products.id})" class="list-group-item list-group-item-action cursor-active">    
                 <div class="row">
                     <div class="col-3">
                         <img src="${products.image}" class="img-thumbnail">
@@ -72,7 +74,7 @@ function mostrandoProductos(corriendoElArray) {
 
 
 
-function sortAndShowCategories(sortCriteria, categoriesArray) {
+function ordenarYMostrar(sortCriteria, categoriesArray) {
     currentSortCriteria = sortCriteria;
 
     if (categoriesArray != undefined) {
@@ -94,25 +96,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("sortAsc").addEventListener("click", () => {
-        sortAndShowCategories(ordenPorPrecioAlto);
+        ordenarYMostrar(ordenPorPrecioAlto);
     });
 
     document.getElementById("sortDesc").addEventListener("click", () => {
-        sortAndShowCategories(ordenPorPrecioBajo);
+        ordenarYMostrar(ordenPorPrecioBajo);
     });
 
     document.getElementById("sortByCount").addEventListener("click", () => {
-        sortAndShowCategories(ordenPorCantProd);
-    });
-
-    document.getElementById("clearRangeFilter").addEventListener("click", () => {
-        document.getElementById("filtroCostoMinimo").value = "";
-        document.getElementById("filtroCostoMaximo").value = "";
-
-        costoMinimo = undefined;
-        costoMaximo = undefined;
-
-        mostrandoProductos(corriendoElArray);
+        ordenarYMostrar(ordenPorCantProd);
     });
 
     document.getElementById("rangoDePrecios").addEventListener("click", () => {
@@ -136,6 +128,16 @@ document.addEventListener("DOMContentLoaded", () => {
         mostrandoProductos(corriendoElArray);
     });
 
+    document.getElementById("clearRangeFilter").addEventListener("click", () => {
+        document.getElementById("filtroCostoMinimo").value = "";
+        document.getElementById("filtroCostoMaximo").value = "";
+
+        costoMinimo = undefined;
+        costoMaximo = undefined;
+
+        mostrandoProductos(corriendoElArray);
+    });
+
     document.getElementById("busqueda").addEventListener("keyup", () => {
         buscarProductos(corriendoElArray);
     });
@@ -152,6 +154,6 @@ function buscarProductos(corriendoElArray) {
     });
 
     mostrandoProductos(filtrito);
-    console.log(filtrito)
+    console.log(filtrito);
 }
 

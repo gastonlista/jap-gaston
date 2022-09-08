@@ -198,3 +198,24 @@ a.custom-card:hover {
 #cerrar {
   display: none;
 }
+
+.estrellitas a {
+  opacity: 50%;
+  cursor: pointer;
+}
+
+.estrellitas:hover a {
+  opacity: 100%;
+}
+
+.estrellitas a:hover {
+  opacity: 100%;
+}
+
+.estrellitas a:hover ~ a {
+  opacity: 50%;
+}
+
+.checked {
+  color: orange;
+}
