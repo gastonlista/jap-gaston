@@ -219,3 +219,12 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.listas3 {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  border: 1px, solid black;
+  cursor: pointer;
+}
+

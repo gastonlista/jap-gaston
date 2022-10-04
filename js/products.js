@@ -155,5 +155,5 @@ function buscarProductos(corriendoElArray) {
 
     mostrandoProductos(filtrito);
     console.log(filtrito);
-}
+};
 

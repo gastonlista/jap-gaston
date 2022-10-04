@@ -21,18 +21,24 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="login.html">Inicio</a>
+            <a class="nav-link active" href="login.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="sell.html">Vender</a>
+            <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item d-flex" >
-            <a class="nav-link" href="my-profile.html" id="usuario"></a>
-            <button type="button" class="btn btn-primary btn-sm" id="cerrar">Cerrar Sesión</button>
-          </li>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="usuario"
+              data-bs-toggle="dropdown" aria-expanded="false">
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" id="cerrar">Cerrar Sesión</a></li>
+            </ul>
+          </div>
         </ul>
       </div>
     </div>
