@@ -1,9 +1,13 @@
 let arrayCarrito = [];
+let valorProd = 0;
+let valTotal = 0;
+
 
 document.addEventListener("DOMContentLoaded", () => {
     getJSONData(carritox).then(function (resultObj) {
         if (resultObj.status === "ok") {
             carritox = resultObj.data
+            //valor = carritox.unitCost
             carlitos(carritox)
             console.log(carritox)
         }
@@ -11,12 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-function carlitos(carritox) {
-
+function carlitos(arrayCarrito) {
     let htmlContentToAppend = "";
-    let { } = carritox
 
-    htmlContentToAppend += `
+    const carritoArray = arrayCarrito.articles;
+    for (let i = 0; i < carritoArray.length; i++) {
+        let articles = carritoArray[i]
+        htmlContentToAppend += `
                 <br>
                 <br>
                 <h1 class="d-flex w-100 justify-content-center">Carrito de compras</h1>
@@ -39,26 +44,31 @@ function carlitos(carritox) {
                     <div>
                     <br>
                     <div class="row">
-                        <div class="col"><img src="${carritox.articles[0].image}" width="100px"></div>
-                        <div class="col"><h4>${carritox.articles[0].name}</4></div>
-                        <div class="col"><h4>${carritox.articles[0].currency} ${carritox.articles[0].unitCost}</4></div>
-                        <div class="col"><h4><input type="number" onchange="setItemValues()" placeholder="1"${carritox.articles[0].count}></4></div>
-                        <div class="col"><h4>${carritox.articles[0].currency}</h4> <h4 id="itemTotales">${carritox.articles[0].unitCost}</h4></div>
+                        <div class="col"><img src="${articles.image}" width="100px"></div>
+                        <div class="col"><h4>${articles.name}</4></div>
+                        <div class="col"><h4>${articles.currency} ${articles.unitCost}</4></div>
+                        <div class="col"><h4><input type="number" ${onchange = "setItemValues()"} placeholder="1" ${articles.count}></4></div>
+                        <div class="col"><h4>${articles.currency}</h4> <h4 id="itemTotales">${articles.unitCost}</h4></div>
                         </div>
                     </div>
                 </div>
-            `
+                `
+    };
+
 
     document.getElementById("carlitosCarrito").innerHTML = htmlContentToAppend;
 };
 
-/*setItemValues(arrayCarrito) ;{
-    let tempTotal = 0;
-    let itemTotal = 0;
-    carrito.map(item => {
-        tempTotal += item.unitCost * item.count;
-        itemTotal += item.count;
-    });
-    carritoTotal.innerText = parseFloat(tempTotal.toFixed(2));
-    document.querySelector("itemTotales") = itemTotal
-};*/
+
+addEventListener("input", () => { });
+oninput = () => {
+
+    function setItemValues(item) {
+        valorProd += item.unitCost * item.count;
+        valTotal += item.count;
+    };
+    valTotal.innerText += parseFloat(valorProd.toFixed(2));
+    document.getElementById("itemTotales") + valTotal;
+
+    console.log(setItemValues);
+};
