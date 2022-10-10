@@ -1,13 +1,10 @@
 let arrayCarrito = [];
-let valorProd = 0;
-let valTotal = 0;
 
 
 document.addEventListener("DOMContentLoaded", () => {
     getJSONData(carritox).then(function (resultObj) {
         if (resultObj.status === "ok") {
             carritox = resultObj.data
-            //valor = carritox.unitCost
             carlitos(carritox)
             console.log(carritox)
         }
@@ -18,8 +15,21 @@ document.addEventListener("DOMContentLoaded", () => {
 function carlitos(arrayCarrito) {
     let htmlContentToAppend = "";
 
+
+
+
+
     const carritoArray = arrayCarrito.articles;
     for (let i = 0; i < carritoArray.length; i++) {
+
+        function setItemValues() {
+
+            valor = articles.unitCost * parseInt(document.getElementById("prueba").value);
+            console.log(document.getElementById("prueba").value) -
+                console.log(valor);
+                document.getElementById("itemTotales").innerHTML = valor;
+        };
+
         let articles = carritoArray[i]
         htmlContentToAppend += `
                 <br>
@@ -47,28 +57,17 @@ function carlitos(arrayCarrito) {
                         <div class="col"><img src="${articles.image}" width="100px"></div>
                         <div class="col"><h4>${articles.name}</4></div>
                         <div class="col"><h4>${articles.currency} ${articles.unitCost}</4></div>
-                        <div class="col"><h4><input type="number" ${onchange = "setItemValues()"} placeholder="1" ${articles.count}></4></div>
+                        <div class="col"><h4><input type="number" min="1" id="prueba" ${articles.count}></4></div>
                         <div class="col"><h4>${articles.currency}</h4> <h4 id="itemTotales">${articles.unitCost}</h4></div>
                         </div>
                     </div>
                 </div>
                 `
+
     };
-
-
     document.getElementById("carlitosCarrito").innerHTML = htmlContentToAppend;
+    document.getElementById("carlitosCarrito").innerHTML = htmlContentToAppend;
+    document.getElementById("prueba").addEventListener("input", setItemValues);
+
 };
 
-
-addEventListener("input", () => { });
-oninput = () => {
-
-    function setItemValues(item) {
-        valorProd += item.unitCost * item.count;
-        valTotal += item.count;
-    };
-    valTotal.innerText += parseFloat(valorProd.toFixed(2));
-    document.getElementById("itemTotales") + valTotal;
-
-    console.log(setItemValues);
-};
