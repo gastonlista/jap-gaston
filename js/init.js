@@ -12,13 +12,13 @@ let categorias = localStorage.getItem("catID")
 let productosdata = `https://japceibal.github.io/emercado-api/cats_products/` + categorias + `.json`
 
 
-let info = localStorage.getItem("juegardos")
-let juguetitos = `https://japceibal.github.io/emercado-api/products/` + info + `.json`
+let info = localStorage.getItem("gInfo")
+let infoProducts = `https://japceibal.github.io/emercado-api/products/` + info + `.json`
 
 
-let comentariardos = `https://japceibal.github.io/emercado-api/products_comments/` + info + `.json`
+let settedComments = `https://japceibal.github.io/emercado-api/products_comments/` + info + `.json`
 
-let carritox = `https://japceibal.github.io/emercado-api/user_cart/25801.json`
+let cartData = `https://japceibal.github.io/emercado-api/user_cart/25801.json`
 
 
 

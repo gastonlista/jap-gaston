@@ -3,7 +3,7 @@ let commentsxl = [];
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    getJSONData(juguetitos).then(function (resultObj) {
+    getJSONData(infoProducts).then(function (resultObj) {
         if (resultObj.status === "ok") {
             corriendoElArrayVacio = resultObj.data
             mostrandoProductos(corriendoElArrayVacio)
@@ -13,10 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    getJSONData(comentariardos).then(function (resultObj) {
+    getJSONData(settedComments).then(function (resultObj) {
         if (resultObj.status === "ok") {
             commentsxl = resultObj.data
-            comentarioscomiendo(commentsxl)
+            addingComments(commentsxl)
         }
     });
 });
@@ -95,7 +95,7 @@ function mostrandoProductos(corriendoElArrayVacio) {
             for (let i = 0; i < corriendoElArrayVacio.relatedProducts.length; i++) {
                 let relatedProduct = corriendoElArrayVacio.relatedProducts[i]
                 productosxl += `
-                <div onclick="juguetitosID(${relatedProduct.id})">
+                <div onclick="productID(${relatedProduct.id})">
                     <h5 class="text-center">${relatedProduct.name}</h5>
                     
                 <img src="${relatedProduct.image}" width ="200px">
@@ -109,13 +109,13 @@ function mostrandoProductos(corriendoElArrayVacio) {
     };
 };
 
-function juguetitosID(id){
-    localStorage.setItem("juegardos", id);
+function productID(id){
+    localStorage.setItem("productsDetails", id);
     window.location = "product-info.html"
 };
 
 
-function comentarioscomiendo(commentsxl) {
+function addingComments(commentsxl) {
 
     let htmlContentToAppend = "";
     for (let i = 0; i < commentsxl.length; i++) {
@@ -128,7 +128,7 @@ function comentarioscomiendo(commentsxl) {
                 <div>
                     <br>
                         <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">${products.user} - ${products.dateTime} - <i id="estrellas"> ` + estrellardas(products.score) + `
+                            <h4 class="mb-1">${products.user} - ${products.dateTime} - <i id="estrellas"> ` + stars(products.score) + `
                             </div></h4>
                             <p class="mb-1">${products.description}</p>
                         </div>
@@ -145,7 +145,7 @@ function comentarioscomiendo(commentsxl) {
 
 
 
-function estrellardas(estre) {
+function stars(estre) {
     let calificacion = "";
     for (let i = 1; i <= 5; i++) {
         if (i <= estre) {
@@ -161,11 +161,11 @@ function estrellardas(estre) {
 
 
 
-function mementario() {
+function addComms() {
     let username = localStorage.getItem("username");
     let addcomentario = document.getElementById("comentario").value
-    let estrellitadondevas = document.getElementById("estrellitas").value
-    let calificacion = estrellardas()
+    let getStars = document.getElementById("estrellitas").value
+    let calificacion = stars()
     let now = new Date().toLocaleDateString('es', { day: "numeric", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit" })
     let htmlContentToAppend = "";
 
@@ -173,7 +173,7 @@ function mementario() {
         <div class="list-group-item list-group-item-action cursor-active">
         <div class="row">
         <div class="d-flex w-100 justify-content-between">    
-        <h4 class="mb-1">`+ username + " " + "-" + now + "-" + " " + estrellardas(estrellitadondevas) + `</h4>
+        <h4 class="mb-1">`+ username + " " + "-" + now + "-" + " " + stars(getStars) + `</h4>
         </div>
         </div>
         <p>`+ addcomentario + `</p>

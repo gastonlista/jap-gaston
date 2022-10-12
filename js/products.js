@@ -34,8 +34,8 @@ function sortCategories(criteria, array) {
     return result;
 }
 
-function juguetitosID(id) {
-    localStorage.setItem("juegardos", id);
+function productID(id) {
+    localStorage.setItem("gInfo", id);
     window.location = "product-info.html"
 }
 
@@ -52,7 +52,7 @@ function mostrandoProductos(corriendoElArray) {
             ((costoMaximo == undefined) || (costoMaximo != undefined && parseInt(products.cost) <= costoMaximo))) {
 
             htmlContentToAppend += `
-            <div onclick="juguetitosID(${products.id})" class="list-group-item list-group-item-action cursor-active">    
+            <div onclick="productID(${products.id})" class="list-group-item list-group-item-action cursor-active">    
                 <div class="row">
                     <div class="col-3">
                         <img src="${products.image}" class="img-thumbnail">

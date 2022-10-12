@@ -2,31 +2,31 @@ let arrayCarrito = [];
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    getJSONData(carritox).then(function (resultObj) {
+    getJSONData(cartData).then(function (resultObj) {
         if (resultObj.status === "ok") {
-            carritox = resultObj.data
-            carlitos(carritox)
-            console.log(carritox)
+            cartData = resultObj.data
+            showingCartInfo(cartData)
+            console.log(cartData)
         }
     });
 });
 
 
-function carlitos(arrayCarrito) {
+function showingCartInfo(arrayCarrito) {
     let htmlContentToAppend = "";
 
-    const carritoArray = arrayCarrito.articles;
-    for (let i = 0; i < carritoArray.length; i++) {
+    const infoCart = arrayCarrito.articles;
+    for (let i = 0; i < infoCart.length; i++) {
 
-        function setItemValues() {
+        function calcSubtotal() {
 
-            valor = articles.unitCost * parseInt(document.getElementById("deEscuelita").value);
-            console.log(document.getElementById("deEscuelita").value) -
-                console.log(valor);
-            document.getElementById("itemTotales").innerHTML = valor;
+            subtotal = articles.unitCost * parseInt(document.getElementById("multiply").value);
+            console.log(document.getElementById("multiply").value) -
+                console.log(subtotal);
+            document.getElementById("itemTotales").innerHTML = subtotal;
         };
 
-        let articles = carritoArray[i]
+        let articles = infoCart[i]
         htmlContentToAppend += `
                 <br>
                 <br>
@@ -53,7 +53,7 @@ function carlitos(arrayCarrito) {
                         <div class="col"><img src="${articles.image}" width="100px"></div>
                         <div class="col"><h4>${articles.name}</4></div>
                         <div class="col"><h4>${articles.currency} ${articles.unitCost}</4></div>
-                        <div class="col"><h4><input type="number" min="1" id="deEscuelita" ${articles.count}></4></div>
+                        <div class="col"><h4><input type="number" min="1" id="multiply" ${articles.count}></4></div>
                         <div class="col"><h4>${articles.currency}</h4> <h4 id="itemTotales">${articles.unitCost}</h4></div>
                         </div>
                     </div>
@@ -61,9 +61,9 @@ function carlitos(arrayCarrito) {
                 `
 
     };
-    document.getElementById("carlitosCarrito").innerHTML = htmlContentToAppend;
-    document.getElementById("carlitosCarrito").innerHTML = htmlContentToAppend;
-    document.getElementById("deEscuelita").addEventListener("input", setItemValues);
+    document.getElementById("Cart").innerHTML = htmlContentToAppend;
+    document.getElementById("Cart").innerHTML = htmlContentToAppend;
+    document.getElementById("multiply").addEventListener("input", calcSubtotal);
 
 };
 
