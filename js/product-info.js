@@ -1,5 +1,6 @@
 let corriendoElArrayVacio = [];
 let commentsxl = [];
+let addingCartProd = [];
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -7,6 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (resultObj.status === "ok") {
             corriendoElArrayVacio = resultObj.data
             mostrandoProductos(corriendoElArrayVacio)
+        }
+        let cart = localStorage.getItem("cart");
+        //agregando el nuevo objeto del cart a la lista
+        if (cart != null) {
+            //muestra lo que está guardado
+            addingCartProd = JSON.parse(localStorage.getItem("cart")); 
         }
     });
 });
@@ -90,8 +97,8 @@ function mostrandoProductos(corriendoElArrayVacio) {
           </div>
           </div>
           <br>
-             ` 
-            
+             `
+
             for (let i = 0; i < corriendoElArrayVacio.relatedProducts.length; i++) {
                 let relatedProduct = corriendoElArrayVacio.relatedProducts[i]
                 productosxl += `
@@ -102,14 +109,14 @@ function mostrandoProductos(corriendoElArrayVacio) {
                 </div>
                 `
             };
-            
+
         };
         document.getElementById("productosLista3").innerHTML = productosxl;
         document.getElementById("productosLista").innerHTML = htmlContentToAppend;
     };
 };
 
-function productID(id){
+function productID(id) {
     localStorage.setItem("productsDetails", id);
     window.location = "product-info.html"
 };
@@ -141,7 +148,6 @@ function addingComments(commentsxl) {
         document.getElementById("productosLista2").innerHTML = htmlContentToAppend;
     };
 };
-
 
 
 
@@ -185,6 +191,24 @@ function addComms() {
 };
 
 
+//funcion que agrega productos al cart
+
+function addToCart(corriendoElArrayVacio) {
+
+    let newArt = {};
+
+    newArt.id = corriendoElArrayVacio.id;
+    newArt.image = corriendoElArrayVacio.images[0];
+    newArt.name = corriendoElArrayVacio.name;
+    newArt.currency = corriendoElArrayVacio.currency;
+    newArt.unitCost = corriendoElArrayVacio.cost;
+    newArt.count = "1";
+
+    addingCartProd.push(newArt); //se agrega al array nuevo
+    localStorage.setItem("cart", JSON.stringify(addingCartProd)); //se guarda en local storage como string
+
+    location.href = "cart.html";
+};
 
 
 
