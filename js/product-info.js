@@ -2,7 +2,7 @@ let corriendoElArrayVacio = [];
 let commentsxl = [];
 let addingCartProd = [];
 
-
+//fetch para agregar cosas al carrito
 document.addEventListener("DOMContentLoaded", () => {
     getJSONData(infoProducts).then(function (resultObj) {
         if (resultObj.status === "ok") {
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
+//fetch
 document.addEventListener("DOMContentLoaded", () => {
     getJSONData(settedComments).then(function (resultObj) {
         if (resultObj.status === "ok") {
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
+//funcion para mostrar los productos en pantalla
 function mostrandoProductos(corriendoElArrayVacio) {
     let productosxl = ""
     let htmlContentToAppend = "";
@@ -115,13 +115,13 @@ function mostrandoProductos(corriendoElArrayVacio) {
         document.getElementById("productosLista").innerHTML = htmlContentToAppend;
     };
 };
-
+//local storage para la id de los productos
 function productID(id) {
     localStorage.setItem("productsDetails", id);
     window.location = "product-info.html"
 };
 
-
+//funcion para ver los comentarios que ya estaban en el json
 function addingComments(commentsxl) {
 
     let htmlContentToAppend = "";
@@ -150,7 +150,7 @@ function addingComments(commentsxl) {
 };
 
 
-
+//funcion para aplicar una cantidad de estrellas
 function stars(estre) {
     let calificacion = "";
     for (let i = 1; i <= 5; i++) {
@@ -166,7 +166,7 @@ function stars(estre) {
 
 
 
-
+//funcion para agregar comentarios propios del usuario logueado
 function addComms() {
     let username = localStorage.getItem("username");
     let addcomentario = document.getElementById("comentario").value

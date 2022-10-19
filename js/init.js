@@ -7,17 +7,18 @@ const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
 
-
+//local storage para categorias
 let categorias = localStorage.getItem("catID")
 let productosdata = `https://japceibal.github.io/emercado-api/cats_products/` + categorias + `.json`
 
-
+//local storage para informacion de los productos
 let info = localStorage.getItem("gInfo")
 let infoProducts = `https://japceibal.github.io/emercado-api/products/` + info + `.json`
 
-
+//comentarios default
 let settedComments = `https://japceibal.github.io/emercado-api/products_comments/` + info + `.json`
 
+//data del carrito
 let cartData = `https://japceibal.github.io/emercado-api/user_cart/25801.json`
 
 

@@ -35,11 +35,13 @@ function sortCategories(criteria, array){
     return result;
 }
 
+//localstorage para las id de las categorias
 function setCatID(id) {
     localStorage.setItem("catID", id);
     window.location = "products.html"
 }
 
+//funcioin para ver las categorias
 function showCategoriesList(){
 
     let htmlContentToAppend = "";

@@ -48,10 +48,8 @@ function showingCartInfo(arrayCarrito) {
                     </div>
                 </div>
                 `
-
     };
     document.getElementById("Cart").innerHTML = htmlContentToAppend;
-
 };
 
 //funcion para realizar el calculo del subtotal

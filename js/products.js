@@ -34,13 +34,14 @@ function sortCategories(criteria, array) {
     return result;
 }
 
+//local storage id productos
 function productID(id) {
     localStorage.setItem("gInfo", id);
     window.location = "product-info.html"
 }
 
 
-
+//funcion para mostrar productos en el apartado products
 function mostrandoProductos(corriendoElArray) {
 
     let htmlContentToAppend = "";
@@ -73,7 +74,7 @@ function mostrandoProductos(corriendoElArray) {
 }
 
 
-
+//funcion para ordenar y mostrar 
 function ordenarYMostrar(sortCriteria, categoriesArray) {
     currentSortCriteria = sortCriteria;
 
@@ -144,6 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+//funcion para buscar productos en tiempo real
 function buscarProductos(corriendoElArray) {
 
     let buscandoo = document.getElementById("busqueda").value;

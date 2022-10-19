@@ -3,6 +3,8 @@ const password = document.getElementById("password")
 const button = document.getElementById("button")
 const label = document.getElementsByTagName("label")
 
+
+//funcion del login
 button.addEventListener("click", (e) => {
     e.preventDefault()
     if (username.value == "" || password.value == "") {
@@ -29,7 +31,7 @@ button.addEventListener("click", (e) => {
     }
 });
 
-
+//google signin
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId());
@@ -68,4 +70,5 @@ function onSignIn(googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
 }
+//google signin
 
