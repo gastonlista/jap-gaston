@@ -63,9 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("cerrar").addEventListener("click", () => {
     location.href = "index.html";
-    localStorage.removeItem("username");
-    localStorage.removeItem("catID");
-    localStorage.removeItem("juegardos");
+    localStorage.clear()
   });
 });
 

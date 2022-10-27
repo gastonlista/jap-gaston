@@ -52,54 +52,119 @@
     <div class="container">
       <h3 class="d-flex w-100 justify-content-center">Articulos a comprar</h3>
       <div class="list-group-item">
-      <div class="row">
-              <div class="col"><h4>Imagen</h4></div>
-              <div class="col"><h4>Nombre</h4></div>
-              <div class="col"><h4>Costo</h4></div>
-              <div class="col"><h4>Cantidad</h4></div>
-              <div class="col"><h4>Subtotal</h4></div>
-              </div>
+        <div class="row">
+          <div class="col">
+            <h4>Imagen</h4>
           </div>
+          <div class="col">
+            <h4>Nombre</h4>
+          </div>
+          <div class="col">
+            <h4>Costo</h4>
+          </div>
+          <div class="col">
+            <h4>Cantidad</h4>
+          </div>
+          <div class="col">
+            <h4>Subtotal</h4>
+          </div>
+        </div>
+      </div>
       <div id="Cart"></div>
       <br>
       <br>
-      <div class="list-group-item justify-content-between">
-      <h3>Tipos de envio</h3>
-      <br>
-      <input type="checkbox"> Premium : 2 a 5 dias (+15%)
-      <br>
-      <input type="checkbox"> Express : 5 a 8 dias (+7%)
-      <br>
-      <input type="checkbox"> Standar : 12 a 15 dias (+5%)
-      <br>
-      <br>
-      <h3>Dirección de envio</h3>
-      <br>
-      Calle
-      <input type="text" class="d-flex w-10 justify-content-center">
-      <br>
-      Numero de Calle
-      <input type="text" class="d-flex w-10 justify-content-center">
-      <br>
-      Esquina
-      <input type="text" class="d-flex w-10 justify-content-center">
-      <br>
-      <button type="button" class="btn btn-primary" href="products.html">Enviar</button>
-      </div>
     </div>
+    <form class="needs-validation" novalidate>
+      <div class="container">
+        <div class="list-group-item justify-content-between">
+          <h3>Tipos de envio</h3>
+          <br>
+          <input type="radio" name="send" value=0.15 checked> Premium : 2 a 5 dias (15%)
+          <br>
+          <input type="radio" name="send" value=0.07 required> Express : 5 a 8 dias (7%)
+          <br>
+          <input type="radio" name="send" value=0.05 required> Standar : 12 a 15 dias (5%)
+          <br>
+          <br>
+          <h3>Dirección de envio</h3>
+          <br>
+          Calle
+          <input type="text" class="form-control" required>
+          <br>
+          Numero de Calle
+          <input type="text" class="form-control" required>
+          <br>
+          Esquina
+          <input type="text" class="form-control" required>
+          <br>
+          <!--modal-->
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Seleccionar metodo de pago
+          </button>
+          <button class="btn btn-primary" type="submit">Finalizar Compra</button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Informacion de pago</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <hr>
+                  <input type="radio" name="creditOptions" id="creditCard" class="needs-validation" novalidate>
+                  Tarjeta de credito
+                  <hr>
+                  <p>Titular</p>
+                  <input id="cardName" class="form-control" pattern="[A-Z]" required>
+                  <br>
+                  <br>
+                  <p>Numero de tarjeta</p>
+                  <input id="cardNumber" class="form-control" pattern="[0-9]{16}" required>
+                  <br>
+                  <br>
+                  <p>Codigo de seguridad</p>
+                  <input id="cardSecurity" class="form-control" pattern="[0-9]{3}" required>
+                  <br>
+                  <br>
+                  <p>Vencimiento (MM/AA)</p>
+                  <input id="cardExpire" class="form-control" required>
+                  <br>
+                  <br>
+                  <hr>
+                  <input type="radio" name="creditOptions" id="bankTransfer"> Transferencia Bancaria
+                  <hr>
+                  <p>Numero de cuenta</p>
+                  <input id="bankAccount" class="form-control" pattern="[0-9]{A-Z}" required>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
     <div class="container" id="Subtot">
-      <form aria-required="true">
       <br>
       <br>
       Costos
       <br>
       <div class="list-group-item justify-content-between">
-        <p id="costosS" on="calcSubtotal()">Subtotal</p>
-        
+        <p>Subtotal USD</p>
+        <span id="subtotalArticulos"></span>
+        <hr>
+        <p>Costo de envio USD</p>
+        <span id="cEnvio"></span>
+        <hr>
+        <p>Total USD</p>
+        <span id="totalToPay"></span>
       </div>
-    </form>
     </div>
-    
   </main>
   <footer class="text-muted">
     <div class="container">

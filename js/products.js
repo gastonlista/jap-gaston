@@ -34,7 +34,7 @@ function sortCategories(criteria, array) {
     return result;
 }
 
-//local storage id productos
+//local storage id info productos
 function productID(id) {
     localStorage.setItem("gInfo", id);
     window.location = "product-info.html"
