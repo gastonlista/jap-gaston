@@ -74,7 +74,7 @@
       <br>
       <br>
     </div>
-    <form class="needs-validation" novalidate>
+    <form class="needs-validation" id="fullvalidation" novalidate>
       <div class="container">
         <div class="list-group-item justify-content-between">
           <h3>Tipos de envio</h3>
@@ -89,20 +89,20 @@
           <h3>Dirección de envio</h3>
           <br>
           Calle
-          <input type="text" class="form-control" required>
+          <input type="text" class="form-control" id="street" required>
           <br>
           Numero de Calle
-          <input type="text" class="form-control" required>
+          <input type="text" class="form-control" id="streetNumber" required>
           <br>
           Esquina
-          <input type="text" class="form-control" required>
+          <input type="text" class="form-control" id="esquina" required>
           <br>
           <!--modal-->
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Seleccionar metodo de pago
           </button>
-          <button class="btn btn-primary" type="submit">Finalizar Compra</button>
+          <button class="btn btn-primary" type="submit" id="btnFinish">Finalizar Compra</button>
           <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -118,26 +118,26 @@
                   Tarjeta de credito
                   <hr>
                   <p>Titular</p>
-                  <input id="cardName" class="form-control" pattern="[A-Z]" required>
+                  <input id="cardName" class="form-control" placeholder="Tu nombre y apellido van aqui" required>
                   <br>
                   <br>
                   <p>Numero de tarjeta</p>
-                  <input id="cardNumber" class="form-control" pattern="[0-9]{16}" required>
+                  <input id="cardNumber" class="form-control" pattern="[0-9]{16}" placeholder="xxxx xxxx xxxx xxxx" required>
                   <br>
                   <br>
                   <p>Codigo de seguridad</p>
-                  <input id="cardSecurity" class="form-control" pattern="[0-9]{3}" required>
+                  <input id="cardSecurity" class="form-control" pattern="[0-9]{3}" placeholder="321" required>
                   <br>
                   <br>
                   <p>Vencimiento (MM/AA)</p>
-                  <input id="cardExpire" class="form-control" required>
+                  <input id="cardExpire" class="form-control" placeholder="07/24" required>
                   <br>
                   <br>
                   <hr>
                   <input type="radio" name="creditOptions" id="bankTransfer"> Transferencia Bancaria
                   <hr>
                   <p>Numero de cuenta</p>
-                  <input id="bankAccount" class="form-control" pattern="[0-9]{A-Z}" required>
+                  <input id="bankAccount" class="form-control" pattern="[0-9]{A-Z}" placeholder="xxxx xxxx xxxx xxxx" required>
                 </div>
                 <div class="modal-footer">
                   <button class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>

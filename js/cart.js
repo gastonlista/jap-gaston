@@ -96,7 +96,7 @@ function showingCartInfo(arrayCarrito) {
                         <div class="col"><img src="${articles.image}" width="100px"></div>
                         <div class="col"><h4>${articles.name}</4></div>
                         <div class="col"><h4>${articles.currency} ${articles.unitCost}</4></div>
-                        <div class="col"><h4><input type="number" onchange="subtotalCalc(${articles.unitCost},${articles.id}), cartSubtotal()" min="1" value="1" id="multiply${articles.id}" ${articles.count}></4></div>
+                        <div class="col"><h4><input type="number" onchange="subtotalCalc(${articles.unitCost},${articles.id}), cartSubtotal()" min="1" value="1" id="multiply${articles.id}" ${articles.count} class="needs-validation" novalidate required></4></div>
                         <div class="col"><h4>${articles.currency}</h4> <h4 class="price" id="totalItems${articles.id}">${articles.unitCost}</h4></div>
                         <button type="button" class="btn btn-outline-danger btn-sm erase"><i class="fas fa-trash-alt"></i></button>
                         </div>
@@ -196,5 +196,16 @@ function disable(){
         document.getElementById("cardSecurity").disabled = false;
     }
 
-}
+};
+
+btnFinish.addEventListener("click", (e) => {
+    e.preventDefault()
+    if (street.value === "" && streetNumber.value === "" && esquina.value === "" && cardName.value === "" && cardNumber.value === "" &&
+        cardExpire.value === "" && cardSecurity.value === "" && bankAccount.value === "" ) {
+        alert("Tenes que ingresar todos los datos requeridos!")
+    }
+    else {
+        alert("Compra realizada!")
+    }
+});
 
