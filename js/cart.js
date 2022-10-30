@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
             addArticulos = JSON.parse(localStorage.getItem("cart"));
             //se agrega el "objeto" del json al array
             addArticulos.push(arrayCarrito);
-            //se muestra la función con el array como parametro
+            //muestro la funcion con el array como parametro
             showingCartInfo(addArticulos);
             //carga la funcion con la pagina
             cartSubtotal()
@@ -53,27 +53,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function () {
-    'use strict'
+//Funcion que chequea las validaciones y permite seguir o no con la compra
+(function validacion () {
+    "use strict"
   
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('.needs-validation')
+    //busca todos los forms y revisa las validaciones de bootstrap
+    var forms = document.querySelectorAll(".needs-validation")
   
-    // Loop over them and prevent submission
+    //revisa todos en loop y previene que se envie por error
     Array.prototype.slice.call(forms)
       .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
+        form.addEventListener("submit", function (event) {
           if (!form.checkValidity()) {
             event.preventDefault()
             event.stopPropagation()
+          } else {
+            alert("Compra realizada!")
           }
-  
-          form.classList.add('was-validated')
+          form.classList.add("was-validated")
         }, false)
       })
-  })()
-
+  })();
 
 
 //funcion para mostrar la informacion del json
@@ -198,14 +198,4 @@ function disable(){
 
 };
 
-btnFinish.addEventListener("click", (e) => {
-    e.preventDefault()
-    if (street.value === "" && streetNumber.value === "" && esquina.value === "" && cardName.value === "" && cardNumber.value === "" &&
-        cardExpire.value === "" && cardSecurity.value === "" && bankAccount.value === "" ) {
-        alert("Tenes que ingresar todos los datos requeridos!")
-    }
-    else {
-        alert("Compra realizada!")
-    }
-});
 
