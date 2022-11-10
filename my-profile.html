@@ -59,9 +59,82 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container justify-content-center">
+      <div class="list-group-item justify-content-between">
+        <form class="row g-3 needs-validation" id="formVal" novalidate>
+          <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">Primer Nombre</label>
+            <input type="text" class="form-control" id="validationCustom01" placeholder="Gastón" required>
+            <div class="valid-feedback">
+              Parece bien!
+            </div>
+            <div class="invalid-feedback">
+              Es necesario ingresar lo requerido aqui!
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Segundo Nombre</label>
+            <input type="text" class="form-control" id="validationCustom02" placeholder="Tomas" required>
+            <div class="valid-feedback">
+              Parece bien!
+            </div>
+            <div class="invalid-feedback">
+              Es necesario ingresar lo requerido aqui!
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="validationCustom03" class="form-label">Primer Apellido</label>
+            <input type="text" class="form-control" id="validationCustom03" placeholder="Lista" required>
+            <div class="valid-feedback">
+              Parece bien!
+            </div>
+            <div class="invalid-feedback">
+              Es necesario ingresar lo requerido aqui!
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="validationCustom04" class="form-label">Segundo Apellido</label>
+            <input type="text" class="form-control" id="validationCustom04" placeholder="Trujillo" required>
+            <div class="valid-feedback">
+              Parece bien!
+            </div>
+            <div class="invalid-feedback">
+              Es necesario ingresar lo requerido aqui!
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="validationCustom05" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="validationCustom05" placeholder="ejemplo@outlook.com" disabled required>
+            <div class="valid-feedback">
+              Parece bien!
+            </div>
+            <div class="invalid-feedback">
+              Es necesario ingresar lo requerido aqui!
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="validationCustom06" class="form-label">Numero de contacto</label>
+            <input type="number" class="form-control" pattern="[0-9]{1,9}" id="validationCustom06" placeholder="093583373"  required>
+            <div class="valid-feedback">
+              Parece bien!
+            </div>
+            <div class="invalid-feedback">
+              Es necesario ingresar lo requerido aqui!
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="validationCustom07" class="form-label">Profile Photo:</label>
+            <input class="form-control" id="validationCustom07" type="file" name="profile_photo" placeholder="Foto" required="">
+            <img class="rounded-circle mt-5" width="150px" id="profilePicture" src="img/profilePicExample.jpg">
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">Guardar datos</button>
+          </div>
+        </form>
       </div>
     </div>
   </main>
