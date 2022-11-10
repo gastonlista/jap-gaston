@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   showOfData();
+  //mostramos el mail en dicho input
   let email = localStorage.getItem("username");
   document.getElementById("validationCustom05").value = email;
 
-
+  //evento change para cambiar la imagen de perfil predeterminada por la que seleccionemos nosotros
   document.getElementById("validationCustom07").addEventListener("change", () => {
     let newImage = document.getElementById("profilePicture");
     let imagenes = document.getElementById("validationCustom07").files[0];
@@ -24,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 let dataUser = {};
-
+//funcion para guardar la informacion de los inputs
 function dataSaving() {
 
   dataUser.name = document.getElementById("validationCustom01").value;
@@ -38,7 +39,7 @@ function dataSaving() {
   localStorage.setItem("userData", JSON.stringify(dataUser));
 };
 
-
+//funcion que toma la informacion guardada anteriormente y la muestra en los inputs
 function showOfData() {
   let infoUser = JSON.parse(localStorage.getItem("userData"))
   if (infoUser != null) {
@@ -56,7 +57,7 @@ function showOfData() {
 
 
 
-
+//event listener que chequea las validaciones y guarda la informacion
 document.getElementById("formVal").addEventListener("submit", event => {
 
   if (!formVal.checkValidity()) {
