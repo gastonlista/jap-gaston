@@ -3,19 +3,22 @@ document.addEventListener("DOMContentLoaded", () => {
   let email = localStorage.getItem("username");
   document.getElementById("validationCustom05").value = email;
 
-  let newImage = document.getElementById("profilePicture");
-  let imagenes = document.getElementById("validationCustom07").files[0];
-  let fileReader = new FileReader();
 
-  if(imagenes){
+  document.getElementById("validationCustom07").addEventListener("change", () => {
+    let newImage = document.getElementById("profilePicture");
+    let imagenes = document.getElementById("validationCustom07").files[0];
+    let fileReader = new FileReader();
+
+    if (imagenes) {
       fileReader.readAsDataURL(imagenes);
-  }
-  else{
-      //newImage.src = "img/user.png";
-  }
+    }
+    else {
+      newImage.src = "img/user.png";
+    }
 
-  fileReader.addEventListener("load",()=>{
+    fileReader.addEventListener("load", () => {
       newImage.src = fileReader.result;
+    })
   });
 
 });
